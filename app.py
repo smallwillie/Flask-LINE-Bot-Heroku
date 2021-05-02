@@ -34,7 +34,11 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     get_message = event.message.text
-
-    # Send To Line
-    reply = TextSendMessage(text=f"{get_message}")
-    line_bot_api.reply_message(event.reply_token, reply)
+    if(get_message=="hello"):
+        reply_text = "Hello I am AiotBpt!"
+    elif(get_message=="hi"):
+        reply_text = "https://imgur.com"
+    else:
+        reply_text = "Wrong keywords!"
+    message = TextSendMessage(reply_text)
+    line_bot_api.reply_message(event.reply_token, message)
